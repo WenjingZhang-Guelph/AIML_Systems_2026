@@ -1,0 +1,12 @@
+services:
+  graph-gallery:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_DEBUG=0
+    restart: unless-stopped
+    mem_limit: 512m
+    volumes:
+      - ./tags.json:/app/tags.json
+      - ../figures:/figures:ro

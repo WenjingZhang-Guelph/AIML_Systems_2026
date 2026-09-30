@@ -1,0 +1,21 @@
+FROM postgres:latest
+
+RUN apt update -y
+RUN apt install git -y
+RUN apt install make -y
+
+RUN git clone https://github.com/mit-lcp/eicu-code.git /eicu-code
+
+WORKDIR /eicu-code/build-db/postgres
+
+# Initialization script
+COPY initialize_eicu.sh /docker-entrypoint-initdb.d/
+
+# Creating and running container
+# docker build -t eicu-postgres -f Dockerfile-eicu .
+# docker run --name EICU -p 5434:5432 -v /c/Datasets/eicu-crd:/dataset -e POSTGRES_PASSWORD=postgres --shm-size=8g -d eicu-postgres
+
+# Setup database
+# make eicu-check datadir=/dataset/
+# make initialize DBUSER=eicu DBPASS=eicu DBNAME=eicu DBSCHEMA=eicu_crd
+# make eicu datadir=/dataset/

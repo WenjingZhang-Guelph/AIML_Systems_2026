@@ -1,0 +1,30 @@
+# NOTE: extract_notebook_graphs.py, render_marimo_mimic_iii.py,
+# render_marimo.sbatch, and build_manifest.py used to be gitignored here
+# ("build-only, not needed on target") back when this was a standalone,
+# clone-and-run gallery repo. This gallery is now permanently part of the
+# toolbox monorepo (it depends on the sibling ../figures/ folder and is no
+# longer standalone), so these regeneration scripts are version-controlled
+# like everything else.
+
+# Intermediate manifest fragments (merged into graphs_manifest.json) now
+# live in ../figures/, not here — see the root .gitignore for those.
+
+# Local developer/AI files — kept on disk but not in the repo
+CLAUDE.md
+HANDOFF.md
+.claude
+
+# Local Python venv created by run.sh
+.venv/
+
+# SLURM logs
+logs/*
+!logs/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store

@@ -1,0 +1,36 @@
+# Model / serialized data
+*.pkl
+*.pickle
+*.feather
+
+# JSON files
+*.json
+
+# Toml files
+*.toml
+
+# Notebooks
+*.ipynb
+
+# HTML files
+*.html
+
+# Old backup files
+*.old
+
+# Compressed archives
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.gz
+*.bz2
+*.7z
+*.rar
+
+# IDE / environment
+*.env
+.idea/
+.venv*/
+venv/
+**/__pycache__/

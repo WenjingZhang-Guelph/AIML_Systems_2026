@@ -1,0 +1,22 @@
+FROM postgres:latest
+
+RUN apt update -y
+RUN apt install git -y
+RUN apt install make -y
+
+RUN git clone https://github.com/MIT-LCP/mimic-code.git
+
+# Set the workdir
+WORKDIR /mimic-code/mimic-iii/buildmimic/postgres
+
+# Initialization script
+COPY initialize_mimic-iii.sh /docker-entrypoint-initdb.d/
+
+# docker build -t mimic-iii-postgres -f Dockerfile-mimic-iii .
+# docker run --name Mimic-III -p 5432:5432 -v /c/Datasets/mimiciii:/dataset -e POSTGRES_PASSWORD=postgres --shm-size=8g -d mimic-iii-postgres
+
+# In psql terminal run:
+# make create-user mimic datadir=/dataset
+# make mimic-gz datadir="/dataet"
+# psql -U postgres -d mimic
+# mimic=# SET search_path TO mimiciii;

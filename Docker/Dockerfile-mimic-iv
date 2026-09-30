@@ -1,0 +1,19 @@
+FROM postgres:latest
+
+RUN apt update -y
+RUN apt install git -y
+
+RUN git clone https://github.com/MIT-LCP/mimic-code.git /mimic-code
+
+WORKDIR /mimic-code/mimic-iv/buildmimic/postgres
+
+# Initialization script
+COPY initialize_mimic-iv.sh /docker-entrypoint-initdb.d/
+
+# Creating and running container
+# docker build -t mimic-iv-postgres -f Dockerfile-mimic-iv .
+# docker run --name Mimic-IV -p 5433:5432 -v /c/Datasets/mimiciv:/dataset -e POSTGRES_PASSWORD=postgres --shm-size=8g -d mimic-iv-postgres
+
+# Setup database
+# psql -U postgres -f create.sql
+# psql -U postgres -v ON_ERROR_STOP=1 -v mimic_data_dir=/dataset -f load.sql
